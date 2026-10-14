@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Praktikum: Responsive Design (Flexbox + Grid + Media Queries)</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page">
+    <div class="site" role="document" aria-labelledby="pageTitle">
+
+      <!-- Header -->
+      <header class="site-header" role="banner">
+        <h1 id="pageTitle">Responsive Design — Praktikum</h1>
+        <p>Praktikum front-end: kombinasi Grid, Flexbox, dan Media Queries. Isi menggunakan teks dummy.</p>
+      </header>
+
+      <!-- Hero (full-width image) -->
+      <figure class="hero" aria-hidden="false">
+        <!-- Inline SVG data URI as hero image (self-contained asset) -->
+        <img alt="Hero: path through green hills" src='data:image/svg+xml;utf8,
+          <svg xmlns="http://www.w3.org/2000/svg" width="1600" height="400" viewBox="0 0 1600 400">
+            <defs>
+              <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0" stop-color="%23eaf3ff"/>
+                <stop offset="1" stop-color="%23e3f0ea"/>
+              </linearGradient>
+            </defs>
+            <rect width="1600" height="400" fill="%23f6f8fb"/>
+            <g transform="translate(0,40)">
+              <rect x="0" y="140" width="1600" height="220" fill="%2383c47d"/>
+              <path d="M0 200 C200 140 400 160 600 180 C800 200 1000 180 1200 160 C1400 140 1600 120 1600 120 L1600 400 L0 400 Z" fill="%2368b162" opacity="0.95"/>
+              <path d="M0 240 C240 200 460 220 700 210 C980 198 1180 220 1600 190 L1600 400 L0 400 Z" fill="%2364a657" opacity="0.5"/>
+            </g>
+            <text x="50%" y="62" font-family="Arial, sans-serif" font-size="28" text-anchor="middle" fill="%230d1b2a">Header hero — contoh gambar (inline SVG)</text>
+          </svg>'>
+      </figure>
+
+      <!-- Main content (cards) -->
+      <main class="site-main" role="main" aria-label="Konten utama">
+        <!-- Card 1 -->
+        <article class="card" aria-labelledby="c1title">
+          <div class="thumb" role="img" aria-label="Gambar pemandangan 1">
+            <img alt="Pemandangan gunung" src='data:image/svg+xml;utf8,
+              <svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+                <rect width="800" height="450" fill="%23eaf2ff"/>
+                <path d="M0 350 C120 250 240 280 360 260 C480 240 610 290 800 220 L800 450 L0 450 Z" fill="%2395c0df"/>
+                <path d="M0 400 C180 300 360 320 540 300 C660 290 720 310 800 280 L800 450 L0 450 Z" fill="%2381a9d6"/>
+                <text x="20" y="40" font-family="Arial" font-size="18" fill="%23122735">Thumb 1</text>
+              </svg>'>
+          </div>
+          <h3 id="c1title">Lorem ipsum</h3>
+          <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, ducimus! (teks dummy untuk praktikum) </p>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="card" aria-labelledby="c2title">
+          <div class="thumb" role="img" aria-label="Gambar pemandangan 2">
+            <img alt="Pemandangan danau" src='data:image/svg+xml;utf8,
+              <svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+                <rect width="800" height="450" fill="%23fff6ed"/>
+                <rect x="0" y="270" width="800" height="180" fill="%23cfe9f9"/>
+                <path d="M0 280 C140 230 300 250 420 240 C550 230 680 260 800 220 L800 450 L0 450 Z" fill="%23d7eaf8"/>
+                <text x="20" y="40" font-family="Arial" font-size="18" fill="%233a2f2f">Thumb 2</text>
+              </svg>'>
+          </div>
+          <h3 id="c2title">Lorem ipsum</h3>
+          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="card" aria-labelledby="c3title">
+          <div class="thumb" role="img" aria-label="Gambar bunga">
+            <img alt="Bunga matahari" src='data:image/svg+xml;utf8,
+              <svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+                <rect width="800" height="450" fill="%23f7fbf7"/>
+                <circle cx="400" cy="210" r="80" fill="%23f4c72b"/>
+                <circle cx="400" cy="210" r="36" fill="%23331f12"/>
+                <text x="20" y="40" font-family="Arial" font-size="18" fill="%23222">Thumb 3</text>
+              </svg>'>
+          </div>
+          <h3 id="c3title">Lorem ipsum</h3>
+          <p> Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
+        </article>
+      </main>
+
+      <!-- Sidebar -->
+      <aside class="site-sidebar" role="complementary" aria-label="Sidebar">
+        <h2>Sidebar</h2>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut perspiciatis unde omnis iste natus. </p>
+        <hr style="border:none;border-top:1px solid #eef3fb;margin:12px 0;">
+        <p style="color:var(--muted);font-size:0.95rem;margin-bottom:0.75rem;">Kontrol praktikum:</p>
+        <div class="row">
+          <a class="btn" href="#" role="button">Download Modul</a>
+          <a class="btn" style="background:#14a37f" href="#" role="button">Lihat Instruksi</a>
+        </div>
+      </aside>
+
+      <!-- Footer -->
+      <footer class="site-footer" role="contentinfo">
+        <div>© 2025 Praktikum Front-End — Universitas Contoh</div>
+        <div style="color:var(--muted); font-size:0.9rem;">Versi: 1.0 — Latihan Grid + Flexbox</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

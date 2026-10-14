@@ -1,0 +1,187 @@
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; color: #222; background: #f7f8fa; line-height: 1.45; }
+
+:root{
+    --content-max: 1100px;
+    --gap: 1.25rem;
+    --accent: #0b6efd;
+    --muted: #666;
+    --card-bg: #ffffff;
+    --radius: 12px;
+}
+
+/* Container pusat */
+.page {
+    display: grid;
+    place-items: center;
+    padding: 2rem 1rem;
+}
+
+/* Grid utama: header, hero, content (main + sidebar), footer */
+.site {
+    width: min(95%, var(--content-max));
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(250,250,252,0.95));
+    padding: 1.5rem;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(13,15,20,0.06);
+    display: grid;
+    grid-template-columns: 1fr 320px; /* main + sidebar */
+    grid-template-rows: auto auto 1fr auto; /* header, hero, content, footer */
+    grid-template-areas:
+    "header header"
+    "hero hero"
+    "main sidebar"
+    "footer footer";
+    gap: var(--gap);
+}
+
+header.site-header {
+    grid-area: header;
+    text-align: center;
+    padding: 0.25rem 1rem;
+}
+header.site-header h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 2.4vw, 2.6rem);
+    letter-spacing: -0.02em;
+}
+header.site-header p {
+    margin: 0.35rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* Hero image — responsive */
+.hero {
+    grid-area: hero;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 160px;
+    display: block;
+    box-shadow: 0 6px 18px rgba(13,15,20,0.05);
+}
+.hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Main / content area uses Grid for cards */
+main.site-main {
+    grid-area: main;
+    padding: 0.25rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+}
+
+/* Card: use Flexbox inside for vertical layout */
+.card {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    min-height: 260px;
+    box-shadow: 0 4px 14px rgba(13,15,20,0.04);
+}
+.card .thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 8px;
+    flex-shrink: 0;
+    box-shadow: inset 0 -20px 40px rgba(0,0,0,0.02);
+}
+.card .thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+
+.card h3 { margin: 0; font-size: 1.05rem; }
+.card p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+
+/* Sidebar */
+aside.site-sidebar {
+    grid-area: sidebar;
+    background: linear-gradient(180deg,#ffffff,#fbfdff);
+    border-radius: 10px;
+    padding: 1rem;
+    box-shadow: 0 4px 16px rgba(13,15,20,0.03);
+    height: fit-content;
+}
+aside.site-sidebar h2 { margin-top: 0; font-size: 1.25rem; }
+aside.site-sidebar p { color: var(--muted); margin-bottom: 0.25rem; }
+
+/* Footer */
+footer.site-footer {
+    grid-area: footer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.6rem;
+    border-top: 1px solid #e9eef5;
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+/* Small utility */
+.row { display:flex; gap: .75rem; align-items:center; flex-wrap:wrap; }
+.btn {
+    display:inline-block;
+    background:var(--accent);
+    color:white;
+    padding: .45rem .7rem;
+    border-radius: 8px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.9rem;
+    box-shadow: 0 6px 18px rgba(11,110,253,0.12);
+}
+
+/* ===== MEDIA QUERIES (responsive breakpoints) ===== */
+/* medium screens: make main single column, sidebar below or to the right depending */
+@media (max-width: 1000px) {
+    .site {
+    grid-template-columns: 1fr; /* single column stacked */
+    grid-template-areas:
+        "header"
+        "hero"
+        "main"
+        "sidebar"
+        "footer";
+    }
+    main.site-main {
+    grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* small screens: stack cards vertically, reduce paddings & font sizes */
+@media (max-width: 640px) {
+    .site { padding: 1rem; border-radius: 10px; }
+    header.site-header h1 { font-size: 1.5rem; }
+    header.site-header p { font-size: 0.87rem; }
+
+    main.site-main {
+    grid-template-columns: 1fr;
+    }
+
+    .card { min-height: auto; }
+    .hero { min-height: 120px; }
+
+    footer.site-footer {
+    flex-direction: column;
+    gap: .5rem;
+    align-items: flex-start;
+    }
+}
+
+/* very small devices: tighten spacing */
+@media (max-width: 420px) {
+    :root { --gap: 0.9rem; }
+    .card { padding: 0.85rem; border-radius: 8px; }
+    aside.site-sidebar { padding: .75rem; }
+}
+
+/* Accessibility: focus visible */
+a:focus { outline: 3px solid rgba(11,110,253,0.18); outline-offset: 2px; border-radius: 6px; }
+
